@@ -42,8 +42,8 @@ def process(part, cat2label, split, fout, args, n_workers=12, batch_size=1200):
             str(split[split['split'] == part]['synsetId'].values[i]),
             str(split[split['split'] == part]['modelId'].values[i])
         )
-        if os.path.exists(os.path.join(args.data_dir, 'shapes', name)):
-            if os.path.exists(os.path.join(args.data_dir, 'shapes', name, 'model_normalized.obj')):
+        if os.path.exists(os.path.join(args.data_dir, 'ShapeNetCore.v2', name)):
+            if os.path.exists(os.path.join(args.data_dir, 'ShapeNetCore.v2', name, 'model_normalized.obj')):
                 samples.append(name)
                 labels.append(cat2label['0{}'.format(str(split[split['split'] == part]['synsetId'].values[i]))])
             else:
@@ -73,7 +73,7 @@ def process(part, cat2label, split, fout, args, n_workers=12, batch_size=1200):
     n_batches = np.ceil(len(samples) / batch_size).astype(np.uint32)
     for b_i in range(n_batches):
         processing_list = list(map(
-            lambda s: os.path.join(args.data_dir, 'shapes', s, 'model_normalized.obj'),
+            lambda s: os.path.join(args.data_dir, 'ShapeNetCore.v2', s, 'model_normalized.obj'),
             samples[batch_size * b_i:batch_size * (b_i + 1)]
         ))
         processing_results = processing_pool.map(process_obj_file, processing_list)

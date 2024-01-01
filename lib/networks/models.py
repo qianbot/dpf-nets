@@ -14,27 +14,27 @@ class Local_Cond_RNVP_MC_Global_RNVP_VAE(nn.Module):
     def __init__(self, **kwargs):
         super(Local_Cond_RNVP_MC_Global_RNVP_VAE, self).__init__()
 
-        self.mode = kwargs.get('util_mode')
-        self.deterministic = kwargs.get('deterministic')
+        self.mode = kwargs.get('util_mode') # 'training'
+        self.deterministic = kwargs.get('deterministic') # False
 
-        self.pc_enc_init_n_channels = kwargs.get('pc_enc_init_n_channels')
-        self.pc_enc_init_n_features = kwargs.get('pc_enc_init_n_features')
-        self.pc_enc_n_features = kwargs.get('pc_enc_n_features')
+        self.pc_enc_init_n_channels = kwargs.get('pc_enc_init_n_channels') # 3
+        self.pc_enc_init_n_features = kwargs.get('pc_enc_init_n_features') # 64
+        self.pc_enc_n_features = kwargs.get('pc_enc_n_features') # [128, 256, 512]
 
-        self.g_latent_space_size = kwargs.get('g_latent_space_size')
+        self.g_latent_space_size = kwargs.get('g_latent_space_size') # 512
 
-        self.g_prior_n_flows = kwargs.get('g_prior_n_flows')
-        self.g_prior_n_features = kwargs.get('g_prior_n_features')
+        self.g_prior_n_flows = kwargs.get('g_prior_n_flows') # 7
+        self.g_prior_n_features = kwargs.get('g_prior_n_features') # 128
 
-        self.g_posterior_n_layers = kwargs.get('g_posterior_n_layers')
+        self.g_posterior_n_layers = kwargs.get('g_posterior_n_layers') # 1
 
-        self.p_latent_space_size = kwargs.get('p_latent_space_size')
-        self.p_prior_n_layers = kwargs.get('p_prior_n_layers')
+        self.p_latent_space_size = kwargs.get('p_latent_space_size') # 512
+        self.p_prior_n_layers = kwargs.get('p_prior_n_layers') # 1
 
-        self.p_decoder_n_flows = kwargs.get('p_decoder_n_flows')
-        self.p_decoder_n_features = kwargs.get('p_decoder_n_features')
-        self.p_decoder_base_type = kwargs.get('p_decoder_base_type')
-        self.p_decoder_base_var = kwargs.get('p_decoder_base_var')
+        self.p_decoder_n_flows = kwargs.get('p_decoder_n_flows') # 21
+        self.p_decoder_n_features = kwargs.get('p_decoder_n_features') # 64
+        self.p_decoder_base_type = kwargs.get('p_decoder_base_type') # 'free'
+        self.p_decoder_base_var = kwargs.get('p_decoder_base_var') # -3.596
 
         self.pc_encoder = PointNetCloudEncoder(self.pc_enc_init_n_channels,
                                                self.pc_enc_init_n_features,

@@ -1,11 +1,11 @@
 ### Dataset configs ###
-path2data: /scratch/gpuhost7/rklokov/ShapeNet_Core/
-path2save: /scratch/gpuhost7/rklokov/ShapeNet_Core/
+path2data: /data/net/dl_data/database/robots/ShapeNet/ShapeNetCore
+path2save: /data/hdd1/qf/ShapeNet/save_dir
 meshes_fname: 'ShapeNetCore55v2_meshes_resampled.h5'
 cloud_size: 2048
 
 ### Dataset iterator configs ###
-chosen_label: 
+chosen_label:
 batch_size: 64
 shuffle: true
 num_workers: 8
